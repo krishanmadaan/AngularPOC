@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "signupUsers": [
+    {
+      "fullName": "krishan",
+      "email": "krishanmadaan042@gmail.com",
+      "password": "KakuKaku",
+      "mobile": 9650639355,
+      "id": 1
+    },
+    {
+      "fullName": "harshit",
+      "email": "harshit@gmail.com",
+      "password": "KakuKaku",
+      "mobile": 9671460805,
+      "id": 2
+    },
+    {
+      "fullName": "hooman",
+      "email": "krishan_lal@optum.com",
+      "password": "KakuKaku",
+      "mobile": 9671460805,
+      "id": 3
+    },
+    {
+      "fullName": "harsha",
+      "email": "krishanmadaan042@gmail.com",
+      "password": "KakuKaku",
+      "mobile": 9671460805,
+      "id": 4
+    },
+    {
+      "fullName": "krishan",
+      "email": "krishanmadaan042@gmil.com",
+      "password": "KakuKaku",
+      "mobile": 9671460805,
+      "id": 5
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

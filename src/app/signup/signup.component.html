@@ -1,0 +1,49 @@
+<!-- <p>signup works!!</p> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Sign Up</h1>
+                    <h6>Register Yourself !! </h6>
+                </div>
+               <form>
+                <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="fullName">
+                        <small *ngIf="signupForm.get('fullName').touched && signupForm.get('fullName').errors?.required">Name is required</small>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mobile Number</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" formControlName="mobile">
+                        <small *ngIf="signupForm.get('mobile').touched && signupForm.get('mobile').errors?.required">Mobile Number is required</small>
+                        <small *ngIf="signupForm.get('mobile').errors?.pattern">Mobile number is not 10 digit</small>
+                      </div>
+
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+                      <small *ngIf="signupForm.get('email').touched && signupForm.get('email').errors?.required">Email is required</small>
+                      <small *ngIf="signupForm.get('email').errors?.email">Enter correct Email.</small>
+                      <!-- <small>This email is already Registered.</small> -->
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                      <small *ngIf="signupForm.get('password').touched && signupForm.get('password').errors?.required">Password is required</small>
+                      <small *ngIf="signupForm.get('password').errors?.moreThanSevenCharacters">Password should be more than 7 characters.</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mb-2" [disabled]="!signupForm.valid">Sign Up</button>
+                  </form>
+                  <a style="color:#fff; margin-top:10px;" routerLink="/login">Already Registered? Click to Login</a>
+               </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+

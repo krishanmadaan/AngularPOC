@@ -1,0 +1,132 @@
+
+<app-navbar></app-navbar>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+<div class="sidebar">
+    <a class="active" href="portals#home">Portals Overview</a>
+    <a href="portals#viewPayments">UPA</a>
+    <ul class="portal-side">
+        <li>
+            <a href="portals#viewPayments">View Payments</a>
+        </li>
+        <li>
+            <a href="portals#maintainEnrollment">Maintain Enrollment</a>
+        </li>
+    </ul>
+    <a href="portals#searchRemittance">CSR</a>
+    <ul class="portal-side">
+        <li>
+            <a href="portals#searchRemittance">Search Remittance</a>
+        </li>
+        <li>
+            <a href="portals#billingServiceInformation">Billing Service Information</a>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="content">
+    <section class="content-header home" id="home">
+        <h1 class="homeH">Portal Overview</h1>
+        <div class="container">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-center">UPA</th>
+                        <th class="text-center">CSR</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <tr>
+                        <td class="text-left">For external users.
+
+                        </td>
+                        <td class="text-left">For internal users.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">External Users Include : Providers, Billing Service and Payers.
+
+                        </td>
+                        <td class="text-left">Internal Users include : Payers and Business Administrators.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Some of UPA features depend on whether the registered user is Premium or
+                            Standard.
+
+                        </td>
+                        <td class="text-left">CSR has more features compared to UPA.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>OneHealth Care id manages the identity management system. <br>
+            Difference between Premium and Standard TINs:
+        </p>
+        <img src="assets/Picture3.jpg" alt="">
+
+    </section>
+
+
+    <section class="content-header" id="viewPayments">
+        <h1>UPA</h1>
+        <h2>View Payments</h2>
+        <p>Set the duration in Quick Search and click on pdf link under 835/EPRA column</p>
+        <img src="assets/upa/viewPay/Picture4.jpg" alt="">
+        <img src="assets/upa/viewPay/Picture5.jpg" alt="">
+        <p>Click OK</p>
+        <img src="assets/upa/viewPay/Picture6.jpg" alt="">
+        <p>After refreshing the page user can see the pdf icon click on the pdf icon</p>
+        <img src="assets/upa/viewPay/Picture7.jpg" alt="">
+    </section>
+
+    <section class="content-header" id="maintainEnrollment">
+        <h2>Maintain Enrollment</h2>
+        <p>Login to UPA portal and navigate to Maintain Enrollment.</p>
+        <img src="assets/upa/maintainEnrol/Picture8.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture9.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture10.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture11.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture12.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture13.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture14.jpg" alt="">
+        <img src="assets/upa/maintainEnrol/Picture15.jpg" alt="">
+
+    </section>
+
+    <section class="content-header" id="searchRemittance">
+        <h1>CSR</h1>
+        <h2>Search Remittance</h2>
+        <p>Click on Search Remittance link</p>
+        <img src="assets/csr/searchRemit/Picture16.jpg" alt="">
+        <p>Enter tin number and click search</p>
+        <img src="assets/csr/searchRemit/Picture17.jpg" alt="">
+        <p>Enter payment number and click on Search Remittance </p>
+        <img src="assets/csr/searchRemit//Picture18.jpg" alt="">
+        <p>Click on PDF link</p>
+        <img src="assets/csr/searchRemit/Picture19.jpg" alt="">
+        <p>Click OK</p>
+        <img src="assets/csr/searchRemit/Picture20.jpg" alt="">
+        <img src="assets/csr/searchRemit/Picture21.jpg" alt="">
+        <p>EPRA pdf</p>
+        <img src="assets/csr/searchRemit/Picture22.jpg" alt="">
+    </section>
+
+    <section class="content-header" id="billingServiceInformation">
+        <h2>Billing Service Information</h2>
+        <img src="assets/csr/billingServ/Picture23.jpg" alt="">
+        <p>Select user type as Billing Service and enter tin number</p>
+        <img src="assets/csr/billingServ/Picture24.jpg" alt="">
+        <img src="assets/csr/billingServ/Picture25.jpg" alt="">
+        <img src="assets/csr/billingServ/Picture26.jpg" alt="">
+    </section>
+</div>
+
+
+<app-portal-qa></app-portal-qa>

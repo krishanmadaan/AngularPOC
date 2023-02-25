@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+/* body{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+
+
+
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Roboto', sans-serif; */
+}
+
+.top{
+    background-color:#F6F6F8;
+    padding-left:0px;
+}
+
+.topContainer{
+    width:75%;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    padding: 100px 20px;
+    font-family: Nunito,sans-serif;
+    border-left: 0.5px solid #BFC1CF;
+    border-right: 0.5px solid #BFC1CF;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #36344D;
+    letter-spacing: .3px;
+    
+}
+
+.heading1{
+    letter-spacing: -.003em;
+}
+
+
+.active{
+    border-bottom: 3px solid #2a9d8f;
+}
+/* .a.nav-link.active{
+    color:white;
+} */
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: white;
+}

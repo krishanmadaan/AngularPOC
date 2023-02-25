@@ -1,0 +1,180 @@
+<app-navbar></app-navbar>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+<div class="sidebar">
+    <a class="active" href="enrollmentProcess#home">Enrollment Overview</a>
+    <a href="enrollmentProcess#providers">Providers</a>
+    <a href="enrollmentProcess#billingService">Billing Service</a>
+    <a href="enrollmentProcess#portals">Portals for Enrolling</a>
+    <a href="enrollmentProcess#tables">Tables Used</a>
+    <a href="enrollmentProcess#batches">Batches</a>
+</div>
+
+<div class="content">
+    <section class="content-header home" id="home">
+        <h1 class="homeH">Enrollment Overview</h1>
+        <p>There are two ways in which users which are (Providers or Billing Service) can be added and managed.</p>
+    </section>
+
+    <section class="content-header" id="providers">
+        <h1>Providers</h1>
+        <p>Access Functionality: Super Admin (2 maximum), Administrator, General</p>
+        <h4>Flow of enrollment:</h4>
+        <ul>
+            <li>(ACH flow) Enroll Now -> Provider -> ACH - > Org Details -> Set up Admin -> Financial Institution
+                Information -> Upload W9 -> Review and Submit -> Enrollment Submitted</li>
+            <li>(VCP flow) Enroll Now -> Provider -> VCP - > Org Details -> Set up Admin -> W9 -> Review and Submit ->
+                Enrollment Submitted</li>
+        </ul>
+    </section>
+
+    <section class="content-header" id="billingService">
+        <h1>Billing Service</h1>
+        <p>Access Functionality: Administrator, General</p>
+        <h4>Flow of enrollment:</h4>
+        <ul>
+            <li>Enroll Now -> Provider -> Billing Service Information -> Set up Admin -> Upload W9 -> Review and Submit
+                -> Enrollment Submitted
+        </ul>
+    </section>
+
+    <section class="content-header" id="portals">
+        <h1>Portals for enrolling</h1>
+        <h4>CSR:</h4>
+        <ul>
+            <li>The CSR page is only accessible by Optum Pay team and not by the users.
+        </ul>
+        <h4>UPA:</h4>
+        <ul>
+            <li>The UPA page is accessible to external users.
+        </ul>
+        <h4>Common Functionality:</h4>
+        <ul>
+            <li>While enrollment the source of truth for validating bank account routing numbers is the ABAValidator.
+            </li>
+            <li>All the documents uploaded while enrollment are stored in the ole.provider_doc. This table just stores
+                the internally generated name for the file. The actual document is stored on some other drive.</li>
+        </ul>
+
+    </section>
+
+    <section class="content-header" id="tables">
+        <h1>Tables Used</h1>
+        <div class="container">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="align-center">
+                            Batches
+                        </th>
+                    </tr>
+
+                </thead>
+                <tbody class="table-hover">
+                    <tr class="tb1">
+                        Ctl_grp
+                    </tr>
+                    <tr class="tb1">
+                        Ctl_grp_sched
+                    </tr>
+                    <tr class="tb1">
+                        Enrolled_provider
+                    </tr>
+                    <tr class="tb1">
+                        Payer_enrolled_provider
+                    </tr>
+
+                    <tr class="tb1">
+                        System_configuration
+                    </tr>
+                    <tr class="tb1">
+                        ole.provider_banking_account(for ACH)
+                    </tr>
+                    <tr class="tb1">
+                        ole.payment_designation
+                    </tr>
+                    <tr class="tb1">ole.Product_Selection
+                    </tr>
+                    <tr class="tb1">ole.provider_doc(w9)
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="content-header" id="batches">
+        <h1>Batches</h1>
+        <div class="container">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-center">1012 (Generate Prenote File)</th>
+                        <th class="text-center">0001 (Create Provider enrollment feed)</th>
+                        <th class="text-center">1001 (Process provider enrollment)</th>
+                        <th class="text-center">0002(Process response to provider enrollment feed)</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <tr>
+                        <td class="text-left">queries the database for new providers and sets the status and then
+                            sends a list file to bank for verification.
+                            (what is a prenote file?)<br>
+                            Done to validate the banking information provided while enrolling
+                            Creates Nacha files with Prenote Transactions
+
+                        </td>
+                        <td class="text-left">• 0001 batch job creates the enrollment file.<br>
+                            • 0001 takes all the data with S and creates and enrollment file for a particular payer.<br>
+                            • In the file D in front of the TIN in the file will make it active.<br>
+                            • I in front of the TIN in the file will make it inactive.<br>
+                        </td>
+                        <td class="text-left">It creates a payer response mock file and sends mock file for processing
+                            for payers who choose not to send a response</td>
+                        <td class="text-left">Processes the response files<br>
+                            Updates the status and counts<br>
+                            Creates and send an enrollment summary file.<br>
+                            EP-> ES which are eligible to have mock files created<br>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>Batch Diagram</h4>
+        <img src="assets/Picture2.png" alt="">
+    </section>
+
+
+   
+
+</div>
+
+
+
+
+
+
+
+<!-- <div class="lorem">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis doloremque rem voluptas at suscipit. Provident cum tenetur illo hic officia esse quos libero, sunt dolorem sed nisi, nostrum iste quasi.
+    Temporibus facilis ducimus, consequuntur id corporis, deserunt fuga repellat velit suscipit cumque neque enim architecto illum debitis reiciendis corrupti voluptatibus nemo sapiente unde. Fugit in iure minus voluptate nesciunt doloribus.
+    Officiis officia nesciunt delectus sed amet quia voluptatibus et ipsam, error doloribus, aut unde quae, eaque distinctio ullam? Dolore, mollitia? Sit provident optio, necessitatibus cupiditate error voluptates qui inventore veniam.
+    Architecto voluptas molestiae perspiciatis voluptate, sequi quis quod. Eos ipsam quia aliquam quas suscipit molestiae consequuntur, quidem natus id necessitatibus quod provident qui error, perspiciatis, sequi unde quos. Tenetur, debitis?
+    Cum aperiam, sapiente nostrum voluptate dolorum culpa. Maiores, facere in aliquid ipsum, iure quod quibusdam reprehenderit minus et eum voluptatibus dolorum cumque dolorem error! Non quia quas et quod. Minima.
+    Cumque placeat esse mollitia dolores quasi eveniet laboriosam corrupti velit quibusdam at voluptatum odit, perferendis nisi ex saepe? Doloribus nemo illo cum iste suscipit quae obcaecati tempore magnam neque iusto!
+    Voluptates error consectetur sint in necessitatibus veritatis exercitationem quidem officia officiis eligendi dolore corrupti dicta porro debitis, odit ducimus. Impedit fugit sequi quaerat modi consequuntur vero unde, alias est culpa?
+    Quo dolorum ad aperiam accusantium voluptatum excepturi corporis, magni, ex sed labore aut, tempora maiores officia reprehenderit soluta odio? Provident odit assumenda enim maxime sit nemo quod est maiores soluta.
+    Doloremque repudiandae vitae aspernatur libero, obcaecati animi assumenda reiciendis. Quasi cumque iste omnis, ratione voluptatem deserunt voluptate dolor praesentium quod deleniti nam. Dolor, quibusdam voluptas nostrum nemo eius quasi sit?
+    Hic, amet tempora corporis accusantium aliquam dolores maxime fugit molestiae recusandae id, facere et rerum eos atque, odit neque ea accusamus nobis sapiente nostrum facilis minus. Quibusdam optio soluta minima?
+   </div> -->
+
+   <app-enrollment-process-qa></app-enrollment-process-qa>
+
+
+
+
+
+

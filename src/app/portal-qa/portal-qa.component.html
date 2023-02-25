@@ -1,0 +1,153 @@
+<!-- 
+
+
+  <div class="diffrent-container">
+    <div class="questionAnswer" *ngFor="let i of questionAnswers">
+
+      <div class="que-ans">
+        <div class="question">
+          <h4><span>Question-</span>{{i?.question}}</h4>
+        </div>
+  
+     
+  
+  
+        <div class="answers" *ngIf="i.answer ">
+          <span>Answer-</span>{{i?.answer}}
+        </div>
+  
+  
+
+        <div *ngIf="(!i.answer)" class="btn-3">
+          <button class="btn-submit" *ngIf="!(clickedOnAddAnswerBtn &&i.id==clickedId)" (click)="clicked(i.id)"> Add Answer </button>
+        </div>
+
+  
+        <div *ngIf="click==true && i.id==clickedId" class="btn-3">
+          <form [formGroup]="answerForm" (ngSubmit)="storeAnswer()">
+            <input class="box-2" type="text" formControlName="addAnswer" /><br>
+            <input class="btn-submit" type="button" value="Submit" (click)="submitAnswer(i.id)">
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="form-container">
+      <header class="header-top">
+        <form [formGroup]="questionForm" (ngSubmit)="postQuestion()">
+          <input placeholder="Any question? Ask here..." class="que-box" type="text" formControlName="question">
+          <input class="ans-box" type="hidden" formControlName="answer">
+          <input [disabled]="(questionForm.get('question').value=='' || questionForm.get('question').value===null )?true: false " class="btn-s" type="submit" value="Post">
+        </form>
+      </header>
+    </div>
+
+  </div>
+  
+end
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+ 
+
+  <div class="diffrent-container">
+    <div class="questionAnswer" *ngFor="let i of questionAnswers">
+
+      <div class="que-ans">
+        <div class="question">
+          <h4><span>Question-</span>{{i?.question}}</h4>
+        </div>
+  
+        <div class="answers" *ngIf="i.answer && !(clickedOnEditAnswerButton && i.id==clickedId)">
+          <span>Answer-</span>{{i?.answer}}
+        </div>
+  
+        <div *ngIf="(!i.answer)" class="btn-3">
+          <button class="btn-submit" *ngIf="!(clickedOnAddAnswerBtn &&i.id==clickedId) " (click)="clicked(i.id)"> Add Answer </button>
+        </div>
+
+
+
+
+        <!-- <div *ngIf="i.answer" class="btn-3">
+            <button class="btn-submit" *ngIf="(i.id==clickedId && clickedOnEditAnswerButton )"  (click)="editAnswer()" >Edit</button>
+        </div> -->
+
+
+
+
+
+        <!-- <ng-template #deleteAns> -->
+          <div class="buttons" *ngIf="(i.answer)">
+            <div class="btn-3">
+              <button class="btn-delete" *ngIf="!(clickedOnEditAnswerButton && i.id==clickedId)" (click)="deleteAnswer(i.id)">Delete Answer</button>
+            </div>
+            <div class="btn-3">
+              <button class="btn-edit"  *ngIf="!(clickedOnEditAnswerButton && i.id==clickedId)" (click)="editTemplate(i.id, i.answer)">Edit Answer</button> 
+            </div>
+        </div>
+        <!-- </ng-template> -->
+
+        <div *ngIf="(click==true && i.id==clickedId) || (i.id==clickedId && clickedOnEditAnswerButton )" class="btn-3">
+          <form [formGroup]="answerForm" >
+            <!-- <input class="box-2" type="text" formControlName="addAnswer"  [(ngModel)]="currentAnswer" /><br> -->
+            <textarea  rows="5"  class="box-2" formControlName="addAnswer"  [(ngModel)]="currentAnswer" ></textarea><br>
+            <input class="btn-submit" type="button" [disabled]="(currentAnswer==null || currentAnswer.trim()=='')?true: false" [value]="(clickedOnEditAnswerButton)? 'Save': 'Submit' "   (click)="submitAnswer(i.id, answerForm.get('addAnswer').value)" >
+            <input class="btn-submit" type="button" value="Cancel" (click)="cancel()" >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="form-container">
+      <header class="header-top">
+        <form [formGroup]="questionForm" (ngSubmit)="postQuestion({question: this.questionForm.get('question').value, answer: ''})">
+
+          <!-- <div class="bind-2"> -->
+          <textarea cols="90" rows="5" placeholder="Any question? Ask here..." class="que-box" formControlName="question" [(ngModel)]="enteredQuestion"  (keypress)="keyFunc($event)"></textarea>
+          <!-- <input placeholder="Any question? Ask here..." class="que-box" type="text" formControlName="question" [(ngModel)]="enteredQuestion"  (keypress)="keyFunc($event)"> -->
+          <input class="ans-box" type="hidden" formControlName="answer">
+          <input [disabled]="(enteredQuestion=='null' || enteredQuestion.trim()=='' )?true: false " class="btn-s" type="submit" value="Post">
+        <!-- </div> -->
+
+        </form>
+      </header>
+    </div>
+  </div>
+</body>
+</html>
+
